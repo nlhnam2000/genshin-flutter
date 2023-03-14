@@ -3,12 +3,13 @@ import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/utils/character_utils.dart';
 
 class CharacterAvatar extends StatelessWidget {
-  CharacterAvatar({Key? key, required this.character, this.width, this.height})
+  const CharacterAvatar(
+      {Key? key, required this.character, this.width, this.height})
       : super(key: key);
 
   final Character character;
-  double? width;
-  double? height;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,8 @@ class CharacterAvatar extends StatelessWidget {
       ),
       child: Image.network(
         character.images.icon!,
+        errorBuilder: (context, error, stackTrace) =>
+            const Icon(Icons.error_outline_rounded),
       ),
     );
   }

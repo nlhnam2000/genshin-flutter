@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:genshin_app/models/base_provider_model.dart';
 import 'package:genshin_app/provider/character_provider.dart';
-import 'package:genshin_app/utils/colors.dart';
+import 'package:genshin_app/screens/character_detail.dart';
 import 'package:genshin_app/widgets/character/character_container.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -10,33 +11,48 @@ class CharacterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CharacterProvider characterProvider = context.watch<CharacterProvider>();
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      child: Container(
-        alignment: Alignment.center,
-        decoration: const BoxDecoration(
-            //color: CustomColor.secondaryBackground,
+    return Consumer<CharacterProvider>(
+      builder: (context, value, child) {
+        if (value.characterList.viewStatus == ViewStatus.succeed) {
+          return Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            decoration: const BoxDecoration(
+                //color: CustomColor.secondaryBackground,
+                ),
+            width: double.infinity,
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.9),
+              itemCount: value.characterList.data!.length,
+              itemBuilder: ((context, index) {
+                return GestureDetector(
+                  onTap: () => GoRouter.of(context).pushNamed(
+                    CharacterDetail.routeName,
+                    params: {
+                      "name": value.characterList.data![index].name,
+                    },
+                  ),
+                  child: CharacterContainer(
+                    character: value.characterList.data![index],
+                  ),
+                );
+              }),
             ),
-        width: double.infinity,
-        child: Expanded(
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 0.9),
-            itemCount: characterProvider.characterList.length,
-            itemBuilder: ((context, index) {
-              return GestureDetector(
-                onTap: () => GoRouter.of(context).go("/character/Diluc"),
-                child: CharacterContainer(
-                    character: characterProvider.characterList[index]),
-              );
-            }),
-          ),
-        ),
-      ),
+          );
+        } else if (value.characterList.viewStatus == ViewStatus.failed) {
+          return Center(
+            child: Text(value.errorMessage!.toString()),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }

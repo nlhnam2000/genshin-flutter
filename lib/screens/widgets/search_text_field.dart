@@ -11,6 +11,7 @@ class SearchTextField<T> extends StatefulWidget {
   final double? spacing;
   final double? limitHeight;
   final bool isScrollable;
+  final Function(String value)? onChanged;
 
   const SearchTextField({
     Key? key,
@@ -23,6 +24,7 @@ class SearchTextField<T> extends StatefulWidget {
     this.spacing = 0,
     this.limitHeight,
     this.isScrollable = false,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -33,7 +35,36 @@ class _SearchTextFieldState<T> extends State<SearchTextField<T>> {
   final LayerLink layerLink = LayerLink();
   OverlayEntry? entry;
 
+  void controllerListener() {
+    if (widget.controller.text.isEmpty) {
+      removeOverlay();
+    }
+  }
+
+  @override
+  void initState() {
+    widget.controller.addListener(controllerListener);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(controllerListener);
+    super.dispose();
+  }
+
+  // @override
+  // void didUpdateWidget(covariant SearchTextField<T> oldWidget) {
+  //   if (widget.items.isNotEmpty) {
+  //     showOverlay();
+  //   }
+  //   super.didUpdateWidget(oldWidget);
+  // }
+
   void showOverlay() {
+    // remove previous overlay
+    removeOverlay();
+
     final overlay = Overlay.of(context)!;
     final renderBox = context.findRenderObject() as RenderBox;
     final size = renderBox.size;
@@ -103,6 +134,52 @@ class _SearchTextFieldState<T> extends State<SearchTextField<T>> {
                           widget.itemAsResult(item),
                         ),
                       ),
+                      // child: ListTile(
+                      //   title: RichText(
+                      //     text: TextSpan(
+                      //       style: DefaultTextStyle.of(context).style,
+                      //       children: [
+                      //         // for (String char
+                      //         //     in widget.itemAsResult(item).split("")) ...[
+                      //         //   TextSpan(
+                      //         //     text: char,
+                      //         //     style: TextStyle(
+                      //         //       fontWeight: char.toLowerCase() ==
+                      //         //               widget.controller.text.toLowerCase()
+                      //         //           ? FontWeight.bold
+                      //         //           : null,
+                      //         //     ),
+                      //         //   ),
+                      //         // ]
+                      //         for (int i = 0;
+                      //             i <
+                      //                 widget
+                      //                     .itemAsResult(item)
+                      //                     .split("")
+                      //                     .length;
+                      //             i++) ...[
+                      //           TextSpan(
+                      //             text: widget.itemAsResult(item)[i],
+                      //             style: TextStyle(
+                      //               fontWeight: widget
+                      //                           .controller.text.isNotEmpty &&
+                      //                       widget.controller.text.length - 1 <=
+                      //                           i
+                      //                   ? (widget
+                      //                               .itemAsResult(item)[i]
+                      //                               .toLowerCase() ==
+                      //                           widget.controller.text[i]
+                      //                               .toLowerCase()
+                      //                       ? FontWeight.bold
+                      //                       : null)
+                      //                   : null,
+                      //             ),
+                      //           ),
+                      //         ]
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
                     )
                   ].toList()
               ],
@@ -112,25 +189,19 @@ class _SearchTextFieldState<T> extends State<SearchTextField<T>> {
       );
 
   @override
-  void initState() {
-    super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   showOverlay();
-    // });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    // debugPrint("rebuild");
     return CompositedTransformTarget(
       link: layerLink,
       child: TextField(
         onChanged: (value) {
-          debugPrint(value.isEmpty.toString());
-
           if (value.isEmpty) {
             removeOverlay();
           } else {
             showOverlay();
+          }
+          if (widget.onChanged != null) {
+            widget.onChanged!(value);
           }
         },
         decoration: InputDecoration(

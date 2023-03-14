@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genshin_app/models/base_provider_model.dart';
 import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/provider/character_provider.dart';
 import 'package:genshin_app/screens/character_screen.dart';
@@ -21,24 +22,26 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: ((context) => CharacterProvider()))
+        ChangeNotifierProvider(
+            create: ((context) => CharacterProvider()..getCharacters()))
       ],
       child: DefaultTabController(
         length: 3,
         child: Scaffold(
-          backgroundColor: CustomColor.primaryBackground,
+          // backgroundColor: CustomColor.primaryBackground,
           appBar: AppBar(
             leading: const Icon(Icons.menu),
             actions: [
               IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _showSearch = !_showSearch;
-                    });
-                  },
-                  icon: const Icon(Icons.search))
+                onPressed: () {
+                  setState(() {
+                    _showSearch = !_showSearch;
+                  });
+                },
+                icon: const Icon(Icons.search),
+              )
             ],
-            backgroundColor: CustomColor.primaryBackground,
+            backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(_showSearch ? 80 : 40),
               child: Consumer<CharacterProvider>(
@@ -48,17 +51,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: SearchTextField<Character>(
+                            child: SearchTextField<String>(
                               hintText: "Search for character",
                               controller: searchController,
-                              items: value.characterList,
-                              itemAsResult: (item) => item.name,
+                              items: value.searchResult.viewStatus !=
+                                      ViewStatus.succeed
+                                  ? []
+                                  : value.searchResult.data!,
+                              itemAsResult: (item) => item,
                               onSelected: (value) =>
-                                  searchController.text = value.name,
+                                  searchController.text = value,
                               spacing: 8,
-                              // limitHeight:
-                              //     MediaQuery.of(context).size.height * 0.4,
                               isScrollable: true,
+                              onChanged: (value) {
+                                context
+                                    .read<CharacterProvider>()
+                                    .searchCharacters(keyword: value);
+                              },
                             ),
                           )
                         : Container(),
