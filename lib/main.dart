@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/network/app_service.dart';
 import 'package:genshin_app/repository/repos.dart';
 import 'package:genshin_app/screens/character_detail.dart';
@@ -30,7 +31,9 @@ class MyApp extends StatelessWidget {
         path: "/character/:name",
         name: CharacterDetail.routeName,
         pageBuilder: (context, state) {
-          return CharacterDetail.page(name: state.params["name"]!);
+          return CharacterDetail.page(
+              name: state.params["name"]!,
+              character: state.extra! as Character);
         },
       )
     ],

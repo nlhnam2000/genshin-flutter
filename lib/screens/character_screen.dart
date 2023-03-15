@@ -35,6 +35,7 @@ class CharacterScreen extends StatelessWidget {
                     params: {
                       "name": value.characterList.data![index].name,
                     },
+                    extra: value.characterList.data![index],
                   ),
                   child: CharacterContainer(
                     character: value.characterList.data![index],

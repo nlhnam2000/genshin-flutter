@@ -17,6 +17,8 @@ _$_ImageModel _$$_ImageModelFromJson(Map<String, dynamic> json) =>
       nameicon: json['nameicon'] as String?,
       nameiconcard: json['nameiconcard'] as String?,
       namesideicon: json['namesideicon'] as String?,
+      cover1: json['cover1'] as String?,
+      cover2: json['cover2'] as String?,
     );
 
 Map<String, dynamic> _$$_ImageModelToJson(_$_ImageModel instance) =>
@@ -30,4 +32,6 @@ Map<String, dynamic> _$$_ImageModelToJson(_$_ImageModel instance) =>
       'nameicon': instance.nameicon,
       'nameiconcard': instance.nameiconcard,
       'namesideicon': instance.namesideicon,
+      'cover1': instance.cover1,
+      'cover2': instance.cover2,
     };

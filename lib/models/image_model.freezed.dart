@@ -30,6 +30,8 @@ mixin _$ImageModel {
   String? get nameicon => throw _privateConstructorUsedError;
   String? get nameiconcard => throw _privateConstructorUsedError;
   String? get namesideicon => throw _privateConstructorUsedError;
+  String? get cover1 => throw _privateConstructorUsedError;
+  String? get cover2 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +54,9 @@ abstract class $ImageModelCopyWith<$Res> {
       @JsonKey(name: "hoyolab-avatar") String? hoyolabAvatar,
       String? nameicon,
       String? nameiconcard,
-      String? namesideicon});
+      String? namesideicon,
+      String? cover1,
+      String? cover2});
 }
 
 /// @nodoc
@@ -77,6 +81,8 @@ class _$ImageModelCopyWithImpl<$Res, $Val extends ImageModel>
     Object? nameicon = freezed,
     Object? nameiconcard = freezed,
     Object? namesideicon = freezed,
+    Object? cover1 = freezed,
+    Object? cover2 = freezed,
   }) {
     return _then(_value.copyWith(
       image: freezed == image
@@ -115,6 +121,14 @@ class _$ImageModelCopyWithImpl<$Res, $Val extends ImageModel>
           ? _value.namesideicon
           : namesideicon // ignore: cast_nullable_to_non_nullable
               as String?,
+      cover1: freezed == cover1
+          ? _value.cover1
+          : cover1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cover2: freezed == cover2
+          ? _value.cover2
+          : cover2 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -136,7 +150,9 @@ abstract class _$$_ImageModelCopyWith<$Res>
       @JsonKey(name: "hoyolab-avatar") String? hoyolabAvatar,
       String? nameicon,
       String? nameiconcard,
-      String? namesideicon});
+      String? namesideicon,
+      String? cover1,
+      String? cover2});
 }
 
 /// @nodoc
@@ -159,6 +175,8 @@ class __$$_ImageModelCopyWithImpl<$Res>
     Object? nameicon = freezed,
     Object? nameiconcard = freezed,
     Object? namesideicon = freezed,
+    Object? cover1 = freezed,
+    Object? cover2 = freezed,
   }) {
     return _then(_$_ImageModel(
       image: freezed == image
@@ -197,6 +215,14 @@ class __$$_ImageModelCopyWithImpl<$Res>
           ? _value.namesideicon
           : namesideicon // ignore: cast_nullable_to_non_nullable
               as String?,
+      cover1: freezed == cover1
+          ? _value.cover1
+          : cover1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cover2: freezed == cover2
+          ? _value.cover2
+          : cover2 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -214,7 +240,9 @@ class _$_ImageModel implements _ImageModel {
       @JsonKey(name: "hoyolab-avatar") this.hoyolabAvatar,
       this.nameicon,
       this.nameiconcard,
-      this.namesideicon});
+      this.namesideicon,
+      this.cover1,
+      this.cover2});
 
   factory _$_ImageModel.fromJson(Map<String, dynamic> json) =>
       _$$_ImageModelFromJson(json);
@@ -238,10 +266,14 @@ class _$_ImageModel implements _ImageModel {
   final String? nameiconcard;
   @override
   final String? namesideicon;
+  @override
+  final String? cover1;
+  @override
+  final String? cover2;
 
   @override
   String toString() {
-    return 'ImageModel(image: $image, card: $card, portrait: $portrait, icon: $icon, sideicon: $sideicon, hoyolabAvatar: $hoyolabAvatar, nameicon: $nameicon, nameiconcard: $nameiconcard, namesideicon: $namesideicon)';
+    return 'ImageModel(image: $image, card: $card, portrait: $portrait, icon: $icon, sideicon: $sideicon, hoyolabAvatar: $hoyolabAvatar, nameicon: $nameicon, nameiconcard: $nameiconcard, namesideicon: $namesideicon, cover1: $cover1, cover2: $cover2)';
   }
 
   @override
@@ -263,13 +295,26 @@ class _$_ImageModel implements _ImageModel {
             (identical(other.nameiconcard, nameiconcard) ||
                 other.nameiconcard == nameiconcard) &&
             (identical(other.namesideicon, namesideicon) ||
-                other.namesideicon == namesideicon));
+                other.namesideicon == namesideicon) &&
+            (identical(other.cover1, cover1) || other.cover1 == cover1) &&
+            (identical(other.cover2, cover2) || other.cover2 == cover2));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, image, card, portrait, icon,
-      sideicon, hoyolabAvatar, nameicon, nameiconcard, namesideicon);
+  int get hashCode => Object.hash(
+      runtimeType,
+      image,
+      card,
+      portrait,
+      icon,
+      sideicon,
+      hoyolabAvatar,
+      nameicon,
+      nameiconcard,
+      namesideicon,
+      cover1,
+      cover2);
 
   @JsonKey(ignore: true)
   @override
@@ -295,7 +340,9 @@ abstract class _ImageModel implements ImageModel {
       @JsonKey(name: "hoyolab-avatar") final String? hoyolabAvatar,
       final String? nameicon,
       final String? nameiconcard,
-      final String? namesideicon}) = _$_ImageModel;
+      final String? namesideicon,
+      final String? cover1,
+      final String? cover2}) = _$_ImageModel;
 
   factory _ImageModel.fromJson(Map<String, dynamic> json) =
       _$_ImageModel.fromJson;
@@ -319,6 +366,10 @@ abstract class _ImageModel implements ImageModel {
   String? get nameiconcard;
   @override
   String? get namesideicon;
+  @override
+  String? get cover1;
+  @override
+  String? get cover2;
   @override
   @JsonKey(ignore: true)
   _$$_ImageModelCopyWith<_$_ImageModel> get copyWith =>
