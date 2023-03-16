@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/utils/character_utils.dart';
 import 'package:genshin_app/utils/colors.dart';
+import 'package:genshin_app/utils/constants.dart';
+import 'package:go_router/go_router.dart';
 
 class GenshindbPage extends StatelessWidget {
   final Widget child;
@@ -15,40 +17,71 @@ class GenshindbPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
+      child: Stack(
+        alignment: Alignment.topLeft,
         children: [
           Stack(
             children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.4,
-                decoration: BoxDecoration(
-                  color: getCharacterImageBackground(character),
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      character.images.cover1 ??
-                          character.images.cover2 ??
-                          character.images.icon!,
-                    ),
+              Positioned(
+                top: 0,
+                bottom: 0,
+                right: MediaQuery.of(context).size.width * 0.1,
+                child: Opacity(
+                  opacity: 0.7,
+                  child: Image.network(
+                    character.images.cover1 ??
+                        character.images.cover2 ??
+                        character.images.icon!,
                   ),
                 ),
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                constraints: BoxConstraints(
-                  minHeight: MediaQuery.of(context).size.height * 0.6,
+                height: MediaQuery.of(context).size.height * 0.4,
+                decoration: BoxDecoration(
+                  color: getCharacterImageBackground(character, true),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      character.images.cover1 ??
+                          character.images.cover2 ??
+                          character.images.icon!,
+                      scale: 4,
+                    ),
+                  ),
                 ),
-                margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.3),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20)),
-                  color: CustomColor.primaryBackground,
-                ),
-                child: child,
               ),
             ],
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            constraints: BoxConstraints(
+              minHeight: MediaQuery.of(context).size.height * 0.6,
+            ),
+            margin:
+                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+              color: CustomColor.primaryBackground,
+            ),
+            child: child,
+          ),
+          SafeArea(
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  left: Dimens.paddingMedium,
+                ),
+                child: GestureDetector(
+                  onTap: () => GoRouter.of(context).pop(),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),
