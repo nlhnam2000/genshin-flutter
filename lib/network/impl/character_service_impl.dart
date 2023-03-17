@@ -26,4 +26,18 @@ class CharacterServiceImpl implements CharacterService {
 
     return response;
   }
+
+  @override
+  Future<GenshinDBResponseJson> getCharacterTalents(
+      {required String name}) async {
+    GenshinDBResponseJson response = await get(
+      host: ApiPath.baseHost,
+      path: ApiPath.getCharacterTalents,
+      params: {
+        "name": name,
+      },
+    );
+
+    return response;
+  }
 }

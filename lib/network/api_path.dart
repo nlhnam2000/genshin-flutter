@@ -3,4 +3,5 @@ class ApiPath {
 
   static const String getAllCharacters = "characters";
   static const String searchCharacters = "characters/search";
+  static const String getCharacterTalents = "characters/talents";
 }

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:genshin_app/models/base_provider_model.dart';
 import 'package:genshin_app/models/character_model.dart';
+import 'package:genshin_app/provider/talent_provider.dart';
 import 'package:genshin_app/widgets/core/genshindb_page.dart';
 import 'package:genshin_app/widgets/core/info_section.dart';
+import 'package:genshin_app/widgets/core/talent_item.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class CharacterDetail extends StatefulWidget {
   final String name;
@@ -30,19 +34,51 @@ class CharacterDetail extends StatefulWidget {
 class _CharacterDetailState extends State<CharacterDetail> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GenshindbPage(
-        character: widget.character,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              InfoSection(
-                title: "Biography",
-                content: Text(widget.character.description),
-              ),
-            ],
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => TalentProvider()..getTalents(name: widget.name),
+        ),
+      ],
+      builder: (context, child) => Scaffold(
+        body: GenshindbPage(
+          character: widget.character,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                InfoSection(
+                  title: "Biography",
+                  content: Text(widget.character.description),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Consumer<TalentProvider>(builder: (context, value, child) {
+                  if (value.data.viewStatus == ViewStatus.succeed) {
+                    return InfoSection(
+                      title: "Special Ability",
+                      content: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for (int index = 0;
+                              index < value.data.data!.length;
+                              index++) ...[
+                            TalentItem(combat: value.data.data![index]),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                          ]
+                        ],
+                      ),
+                    );
+                  }
+
+                  return Container();
+                })
+              ],
+            ),
           ),
         ),
       ),

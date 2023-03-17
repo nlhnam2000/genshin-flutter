@@ -1,4 +1,5 @@
 import 'package:genshin_app/models/character_model.dart';
+import 'package:genshin_app/models/combat_model.dart';
 import 'package:genshin_app/network/abstract/character_service.dart';
 import 'package:genshin_app/network/api_service.dart';
 import 'package:genshin_app/network/impl/character_service_impl.dart';
@@ -26,5 +27,18 @@ class CharacterRepoImpl implements CharacterRepo {
         await characterService.searchCharacter(keyword: keyword);
 
     return response.content!["data"].cast<String>();
+  }
+
+  @override
+  Future<List<CombatModel>> getTalents({required String name}) async {
+    GenshinDBResponseJson response =
+        await characterService.getCharacterTalents(name: name);
+    List<CombatModel> combatList = [
+      CombatModel.fromJson(response.content!["combat1"]),
+      CombatModel.fromJson(response.content!["combat2"]),
+      CombatModel.fromJson(response.content!["combat3"]),
+    ];
+
+    return combatList;
   }
 }

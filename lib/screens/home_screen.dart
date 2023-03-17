@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/base_provider_model.dart';
-import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/provider/character_provider.dart';
 import 'package:genshin_app/screens/character_screen.dart';
 import 'package:genshin_app/screens/widgets/search_text_field.dart';

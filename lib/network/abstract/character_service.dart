@@ -4,4 +4,5 @@ import 'package:genshin_app/network/api_service.dart';
 abstract class CharacterService {
   Future<GenshinDBResponseJson> getCharacters();
   Future<GenshinDBResponseJson> searchCharacter({required String keyword});
+  Future<GenshinDBResponseJson> getCharacterTalents({required String name});
 }
