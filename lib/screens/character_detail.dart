@@ -63,9 +63,15 @@ class _CharacterDetailState extends State<CharacterDetail> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           for (int index = 0;
-                              index < value.data.data!.length;
+                              index < value.data.data!.combats.length;
                               index++) ...[
-                            TalentItem(combat: value.data.data![index]),
+                            TalentItem(
+                              combat: value.data.data!.combats[index],
+                              element: widget.character.element,
+                              imagePath: value.data.data!.images
+                                      .getCombatImage(index + 1) ??
+                                  "",
+                            ),
                             const SizedBox(
                               height: 10,
                             ),

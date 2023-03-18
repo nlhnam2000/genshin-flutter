@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/utils/colors.dart';
 
-Color getCharacterImageBackground(Character character,
-    [bool isBlured = false]) {
-  switch (character.element) {
+Color getCharacterImageBackground(String element, [bool isBlured = false]) {
+  switch (element) {
     case 'Pyro':
       return CustomColor.pyroBackground.withOpacity(isBlured ? 0.6 : 1.0);
     case 'Cryo':

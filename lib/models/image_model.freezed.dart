@@ -32,6 +32,12 @@ mixin _$ImageModel {
   String? get namesideicon => throw _privateConstructorUsedError;
   String? get cover1 => throw _privateConstructorUsedError;
   String? get cover2 => throw _privateConstructorUsedError;
+  String? get combat1 => throw _privateConstructorUsedError;
+  String? get combat2 => throw _privateConstructorUsedError;
+  String? get combat3 => throw _privateConstructorUsedError;
+  String? get passive1 => throw _privateConstructorUsedError;
+  String? get passive2 => throw _privateConstructorUsedError;
+  String? get passive3 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +62,13 @@ abstract class $ImageModelCopyWith<$Res> {
       String? nameiconcard,
       String? namesideicon,
       String? cover1,
-      String? cover2});
+      String? cover2,
+      String? combat1,
+      String? combat2,
+      String? combat3,
+      String? passive1,
+      String? passive2,
+      String? passive3});
 }
 
 /// @nodoc
@@ -83,6 +95,12 @@ class _$ImageModelCopyWithImpl<$Res, $Val extends ImageModel>
     Object? namesideicon = freezed,
     Object? cover1 = freezed,
     Object? cover2 = freezed,
+    Object? combat1 = freezed,
+    Object? combat2 = freezed,
+    Object? combat3 = freezed,
+    Object? passive1 = freezed,
+    Object? passive2 = freezed,
+    Object? passive3 = freezed,
   }) {
     return _then(_value.copyWith(
       image: freezed == image
@@ -129,6 +147,30 @@ class _$ImageModelCopyWithImpl<$Res, $Val extends ImageModel>
           ? _value.cover2
           : cover2 // ignore: cast_nullable_to_non_nullable
               as String?,
+      combat1: freezed == combat1
+          ? _value.combat1
+          : combat1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      combat2: freezed == combat2
+          ? _value.combat2
+          : combat2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      combat3: freezed == combat3
+          ? _value.combat3
+          : combat3 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passive1: freezed == passive1
+          ? _value.passive1
+          : passive1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passive2: freezed == passive2
+          ? _value.passive2
+          : passive2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passive3: freezed == passive3
+          ? _value.passive3
+          : passive3 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -152,7 +194,13 @@ abstract class _$$_ImageModelCopyWith<$Res>
       String? nameiconcard,
       String? namesideicon,
       String? cover1,
-      String? cover2});
+      String? cover2,
+      String? combat1,
+      String? combat2,
+      String? combat3,
+      String? passive1,
+      String? passive2,
+      String? passive3});
 }
 
 /// @nodoc
@@ -177,6 +225,12 @@ class __$$_ImageModelCopyWithImpl<$Res>
     Object? namesideicon = freezed,
     Object? cover1 = freezed,
     Object? cover2 = freezed,
+    Object? combat1 = freezed,
+    Object? combat2 = freezed,
+    Object? combat3 = freezed,
+    Object? passive1 = freezed,
+    Object? passive2 = freezed,
+    Object? passive3 = freezed,
   }) {
     return _then(_$_ImageModel(
       image: freezed == image
@@ -223,6 +277,30 @@ class __$$_ImageModelCopyWithImpl<$Res>
           ? _value.cover2
           : cover2 // ignore: cast_nullable_to_non_nullable
               as String?,
+      combat1: freezed == combat1
+          ? _value.combat1
+          : combat1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      combat2: freezed == combat2
+          ? _value.combat2
+          : combat2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      combat3: freezed == combat3
+          ? _value.combat3
+          : combat3 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passive1: freezed == passive1
+          ? _value.passive1
+          : passive1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passive2: freezed == passive2
+          ? _value.passive2
+          : passive2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passive3: freezed == passive3
+          ? _value.passive3
+          : passive3 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -230,7 +308,7 @@ class __$$_ImageModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_ImageModel implements _ImageModel {
+class _$_ImageModel extends _ImageModel {
   const _$_ImageModel(
       {this.image,
       this.card,
@@ -242,7 +320,14 @@ class _$_ImageModel implements _ImageModel {
       this.nameiconcard,
       this.namesideicon,
       this.cover1,
-      this.cover2});
+      this.cover2,
+      this.combat1,
+      this.combat2,
+      this.combat3,
+      this.passive1,
+      this.passive2,
+      this.passive3})
+      : super._();
 
   factory _$_ImageModel.fromJson(Map<String, dynamic> json) =>
       _$$_ImageModelFromJson(json);
@@ -270,10 +355,22 @@ class _$_ImageModel implements _ImageModel {
   final String? cover1;
   @override
   final String? cover2;
+  @override
+  final String? combat1;
+  @override
+  final String? combat2;
+  @override
+  final String? combat3;
+  @override
+  final String? passive1;
+  @override
+  final String? passive2;
+  @override
+  final String? passive3;
 
   @override
   String toString() {
-    return 'ImageModel(image: $image, card: $card, portrait: $portrait, icon: $icon, sideicon: $sideicon, hoyolabAvatar: $hoyolabAvatar, nameicon: $nameicon, nameiconcard: $nameiconcard, namesideicon: $namesideicon, cover1: $cover1, cover2: $cover2)';
+    return 'ImageModel(image: $image, card: $card, portrait: $portrait, icon: $icon, sideicon: $sideicon, hoyolabAvatar: $hoyolabAvatar, nameicon: $nameicon, nameiconcard: $nameiconcard, namesideicon: $namesideicon, cover1: $cover1, cover2: $cover2, combat1: $combat1, combat2: $combat2, combat3: $combat3, passive1: $passive1, passive2: $passive2, passive3: $passive3)';
   }
 
   @override
@@ -297,7 +394,16 @@ class _$_ImageModel implements _ImageModel {
             (identical(other.namesideicon, namesideicon) ||
                 other.namesideicon == namesideicon) &&
             (identical(other.cover1, cover1) || other.cover1 == cover1) &&
-            (identical(other.cover2, cover2) || other.cover2 == cover2));
+            (identical(other.cover2, cover2) || other.cover2 == cover2) &&
+            (identical(other.combat1, combat1) || other.combat1 == combat1) &&
+            (identical(other.combat2, combat2) || other.combat2 == combat2) &&
+            (identical(other.combat3, combat3) || other.combat3 == combat3) &&
+            (identical(other.passive1, passive1) ||
+                other.passive1 == passive1) &&
+            (identical(other.passive2, passive2) ||
+                other.passive2 == passive2) &&
+            (identical(other.passive3, passive3) ||
+                other.passive3 == passive3));
   }
 
   @JsonKey(ignore: true)
@@ -314,7 +420,13 @@ class _$_ImageModel implements _ImageModel {
       nameiconcard,
       namesideicon,
       cover1,
-      cover2);
+      cover2,
+      combat1,
+      combat2,
+      combat3,
+      passive1,
+      passive2,
+      passive3);
 
   @JsonKey(ignore: true)
   @override
@@ -330,7 +442,7 @@ class _$_ImageModel implements _ImageModel {
   }
 }
 
-abstract class _ImageModel implements ImageModel {
+abstract class _ImageModel extends ImageModel {
   const factory _ImageModel(
       {final String? image,
       final String? card,
@@ -342,7 +454,14 @@ abstract class _ImageModel implements ImageModel {
       final String? nameiconcard,
       final String? namesideicon,
       final String? cover1,
-      final String? cover2}) = _$_ImageModel;
+      final String? cover2,
+      final String? combat1,
+      final String? combat2,
+      final String? combat3,
+      final String? passive1,
+      final String? passive2,
+      final String? passive3}) = _$_ImageModel;
+  const _ImageModel._() : super._();
 
   factory _ImageModel.fromJson(Map<String, dynamic> json) =
       _$_ImageModel.fromJson;
@@ -370,6 +489,18 @@ abstract class _ImageModel implements ImageModel {
   String? get cover1;
   @override
   String? get cover2;
+  @override
+  String? get combat1;
+  @override
+  String? get combat2;
+  @override
+  String? get combat3;
+  @override
+  String? get passive1;
+  @override
+  String? get passive2;
+  @override
+  String? get passive3;
   @override
   @JsonKey(ignore: true)
   _$$_ImageModelCopyWith<_$_ImageModel> get copyWith =>

@@ -17,6 +17,7 @@ class GenshindbPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const ClampingScrollPhysics(),
       child: Stack(
         alignment: Alignment.topLeft,
         children: [
@@ -39,7 +40,7 @@ class GenshindbPage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.4,
                 decoration: BoxDecoration(
-                  color: getCharacterImageBackground(character, true),
+                  color: getCharacterImageBackground(character.element, true),
                   image: DecorationImage(
                     image: NetworkImage(
                       character.images.cover1 ??

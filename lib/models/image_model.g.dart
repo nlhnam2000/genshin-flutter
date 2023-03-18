@@ -19,6 +19,12 @@ _$_ImageModel _$$_ImageModelFromJson(Map<String, dynamic> json) =>
       namesideicon: json['namesideicon'] as String?,
       cover1: json['cover1'] as String?,
       cover2: json['cover2'] as String?,
+      combat1: json['combat1'] as String?,
+      combat2: json['combat2'] as String?,
+      combat3: json['combat3'] as String?,
+      passive1: json['passive1'] as String?,
+      passive2: json['passive2'] as String?,
+      passive3: json['passive3'] as String?,
     );
 
 Map<String, dynamic> _$$_ImageModelToJson(_$_ImageModel instance) =>
@@ -34,4 +40,10 @@ Map<String, dynamic> _$$_ImageModelToJson(_$_ImageModel instance) =>
       'namesideicon': instance.namesideicon,
       'cover1': instance.cover1,
       'cover2': instance.cover2,
+      'combat1': instance.combat1,
+      'combat2': instance.combat2,
+      'combat3': instance.combat3,
+      'passive1': instance.passive1,
+      'passive2': instance.passive2,
+      'passive3': instance.passive3,
     };

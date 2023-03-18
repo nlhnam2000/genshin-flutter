@@ -18,7 +18,7 @@ class CharacterAvatar extends StatelessWidget {
       width: width ?? MediaQuery.of(context).size.width * 0.5,
       height: height ?? MediaQuery.of(context).size.height * 0.19,
       decoration: BoxDecoration(
-        color: getCharacterImageBackground(character),
+        color: getCharacterImageBackground(character.element),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Image.network(
