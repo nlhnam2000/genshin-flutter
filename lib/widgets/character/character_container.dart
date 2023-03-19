@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/character_model.dart';
+import 'package:genshin_app/models/general_character_model.dart';
 import 'package:genshin_app/widgets/character/character_avatar.dart';
 
 class CharacterContainer extends StatelessWidget {
   const CharacterContainer({Key? key, required this.character})
       : super(key: key);
 
-  final Character character;
+  final GeneralCharacterModel character;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class CharacterContainer extends StatelessWidget {
         children: [
           CharacterAvatar(character: character),
           Text(
-            character.name,
+            character.name ?? "",
             style: const TextStyle(fontWeight: FontWeight.w600),
           ),
         ],

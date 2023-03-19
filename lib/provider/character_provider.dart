@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/base_provider_model.dart';
 import 'package:genshin_app/models/character_model.dart';
+import 'package:genshin_app/models/general_character_model.dart';
 import 'package:genshin_app/provider/base_provider.dart';
 import 'package:genshin_app/repository/abstract/character_repo.dart';
 import 'package:genshin_app/repository/impl/character_repo_impl.dart';
@@ -10,7 +11,7 @@ import 'package:get/get.dart';
 class CharacterProvider extends BaseProvider {
   // final CharacterRepo repo = CharacterRepoImpl();
   final CharacterRepo repo = Get.find(tag: CharacterRepoImpl.tag);
-  BaseProviderModel<List<Character>> characterList =
+  BaseProviderModel<List<GeneralCharacterModel>> characterList =
       BaseProviderModel.init(data: []);
   BaseProviderModel<List<String>> searchResult =
       BaseProviderModel.init(data: []);
@@ -19,7 +20,7 @@ class CharacterProvider extends BaseProvider {
     characterList = BaseProviderModel.loading();
     await Future.delayed(const Duration(seconds: 1));
     try {
-      List<Character> response = await repo.getCharacters();
+      List<GeneralCharacterModel> response = await repo.getCharacters();
       characterList = BaseProviderModel.succeed(response);
     } on Exception catch (error) {
       if (error is DioError) {
@@ -46,4 +47,13 @@ class CharacterProvider extends BaseProvider {
       notifyListeners();
     }
   }
+
+  // Character? getDetailCharacter({required String name}) {
+  //   Character? character;
+  //   if (characterList.data!.isNotEmpty) {
+  //     character = characterList.data!.firstWhere((char) => char.name == name);
+  //   }
+
+  //   return character;
+  // }
 }

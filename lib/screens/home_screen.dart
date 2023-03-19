@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/base_provider_model.dart';
 import 'package:genshin_app/provider/character_provider.dart';
+import 'package:genshin_app/screens/character_detail.dart';
 import 'package:genshin_app/screens/character_screen.dart';
 import 'package:genshin_app/screens/widgets/search_text_field.dart';
 import 'package:genshin_app/utils/colors.dart';
+import 'package:genshin_app/utils/constants.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,13 +34,16 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: AppBar(
             leading: const Icon(Icons.menu),
             actions: [
-              IconButton(
-                onPressed: () {
+              GestureDetector(
+                onTap: () {
                   setState(() {
                     _showSearch = !_showSearch;
                   });
                 },
-                icon: const Icon(Icons.search),
+                child: Padding(
+                  padding: EdgeInsets.only(right: Dimens.paddingBigger),
+                  child: const Icon(Icons.search),
+                ),
               )
             ],
             backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
@@ -58,8 +64,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ? []
                                   : value.searchResult.data!,
                               itemAsResult: (item) => item,
-                              onSelected: (value) =>
-                                  searchController.text = value,
+                              onSelected: (value) {
+                                GoRouter.of(context).pushNamed(
+                                    CharacterDetail.routeName,
+                                    params: {
+                                      "name": value,
+                                    });
+                                setState(() {
+                                  _showSearch = false;
+                                });
+                              },
                               spacing: 8,
                               isScrollable: true,
                               onChanged: (value) {

@@ -17,8 +17,8 @@ class AppRouter extends BaseProvider {
         name: CharacterDetail.routeName,
         pageBuilder: (context, state) {
           return CharacterDetail.page(
-              name: state.params["name"]!,
-              character: state.extra! as Character);
+            name: state.params["name"]!,
+          );
         },
       )
     ],

@@ -1,6 +1,7 @@
 import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/models/combat_model.dart';
 import 'package:genshin_app/models/combat_response_model.dart';
+import 'package:genshin_app/models/general_character_model.dart';
 import 'package:genshin_app/models/image_model.dart';
 import 'package:genshin_app/network/abstract/character_service.dart';
 import 'package:genshin_app/network/api_service.dart';
@@ -14,12 +15,13 @@ class CharacterRepoImpl implements CharacterRepo {
       Get.find<CharacterService>(tag: CharacterServiceImpl.tag);
   // final CharacterService characterService = CharacterServiceImpl();
   @override
-  Future<List<Character>> getCharacters() async {
+  Future<List<GeneralCharacterModel>> getCharacters() async {
     GenshinDBResponseJson response =
         await CharacterServiceImpl().getCharacters();
 
     return response.content!["data"]
-        .map<Character>((item) => Character.fromJson(item))
+        .map<GeneralCharacterModel>(
+            (item) => GeneralCharacterModel.fromJson(item))
         .toList();
   }
 
@@ -43,5 +45,13 @@ class CharacterRepoImpl implements CharacterRepo {
     ImageModel images = ImageModel.fromJson(response.content!["images"]);
 
     return CombatResponseModel(combatList, images);
+  }
+
+  @override
+  Future<Character> getDetail({required String name}) async {
+    GenshinDBResponseJson response =
+        await characterService.getDetailCharacter(name: name);
+
+    return Character.fromJson(response.content!);
   }
 }

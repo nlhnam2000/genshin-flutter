@@ -33,7 +33,7 @@ class CharacterScreen extends StatelessWidget {
                   onTap: () => GoRouter.of(context).pushNamed(
                     CharacterDetail.routeName,
                     params: {
-                      "name": value.characterList.data![index].name,
+                      "name": value.characterList.data![index].name ?? "",
                     },
                     extra: value.characterList.data![index],
                   ),
