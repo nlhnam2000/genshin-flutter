@@ -52,4 +52,16 @@ class CharacterServiceImpl implements CharacterService {
       },
     );
   }
+
+  @override
+  Future<GenshinDBResponseJson> getCharacterAscension(
+      {required String name}) async {
+    return await get(
+      host: ApiPath.baseHost,
+      path: ApiPath.getCharacterAscension,
+      params: {
+        "name": name,
+      },
+    );
+  }
 }

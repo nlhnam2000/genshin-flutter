@@ -6,4 +6,5 @@ abstract class CharacterService {
   Future<GenshinDBResponseJson> searchCharacter({required String keyword});
   Future<GenshinDBResponseJson> getCharacterTalents({required String name});
   Future<GenshinDBResponseJson> getDetailCharacter({required String name});
+  Future<GenshinDBResponseJson> getCharacterAscension({required String name});
 }

@@ -15,6 +15,7 @@ class DetailCharacterProvider extends BaseProvider {
 
   void getCharacterDetail({required String name}) async {
     _characterData = BaseProviderModel.loading();
+    notifyListeners();
     try {
       Character response = await characterRepo.getDetail(name: name);
       _characterData = BaseProviderModel.succeed(response);

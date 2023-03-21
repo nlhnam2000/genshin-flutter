@@ -1,3 +1,4 @@
+import 'package:genshin_app/models/ascension_model.dart';
 import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/models/combat_model.dart';
 import 'package:genshin_app/models/combat_response_model.dart';
@@ -53,5 +54,23 @@ class CharacterRepoImpl implements CharacterRepo {
         await characterService.getDetailCharacter(name: name);
 
     return Character.fromJson(response.content!);
+  }
+
+  @override
+  Future<List<List<AscensionModel>>> getAscension(
+      {required String name}) async {
+    GenshinDBResponseJson response =
+        await characterService.getCharacterAscension(name: name);
+    List<List<AscensionModel>> result = [];
+
+    for (int i = 0; i < response.content!["data"].length; i++) {
+      late List<AscensionModel> ascends;
+      ascends = response.content!["data"][i]
+          .map<AscensionModel>((item) => AscensionModel.fromJson(item))
+          .toList();
+      result.add(ascends);
+    }
+
+    return result;
   }
 }

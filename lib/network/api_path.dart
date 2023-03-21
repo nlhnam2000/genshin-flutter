@@ -7,4 +7,5 @@ class ApiPath {
   static const String searchCharacters = "characters/search";
   static const String getCharacterTalents = "characters/talents";
   static const String getDetailCharacter = "characters/detail";
+  static const String getCharacterAscension = "characters/material";
 }

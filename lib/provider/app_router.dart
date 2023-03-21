@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 class AppRouter extends BaseProvider {
   late GoRouter router = GoRouter(
     initialLocation: "/",
+    debugLogDiagnostics: true,
     routes: [
       GoRoute(
         path: "/",
