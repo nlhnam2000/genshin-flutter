@@ -31,8 +31,8 @@ class _ChangeQuantityState extends State<ChangeQuantity> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IconButton(
-          onPressed: () {
+        InkWell(
+          onTap: () {
             if (widget.minData != null) {
               if (currentQuantity > widget.minData!) {
                 setState(() {
@@ -47,17 +47,23 @@ class _ChangeQuantityState extends State<ChangeQuantity> {
               widget.onChangeQuantity(currentQuantity);
             }
           },
-          icon: const Icon(Icons.remove),
+          child: const Icon(
+            Icons.remove_circle_outline_outlined,
+            size: 30,
+          ),
         ),
         const SizedBox(
-          width: 7,
+          width: 15,
         ),
-        Text(currentQuantity.toString()),
+        Text(
+          currentQuantity.toString(),
+          style: const TextStyle(fontSize: 23),
+        ),
         const SizedBox(
-          width: 7,
+          width: 15,
         ),
-        IconButton(
-          onPressed: () {
+        InkWell(
+          onTap: () {
             if (widget.maxData != null) {
               if (currentQuantity < widget.maxData!) {
                 setState(() {
@@ -72,7 +78,7 @@ class _ChangeQuantityState extends State<ChangeQuantity> {
               widget.onChangeQuantity(currentQuantity);
             }
           },
-          icon: const Icon(Icons.add),
+          child: const Icon(Icons.add_circle_outline_sharp, size: 30),
         ),
       ],
     );

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/ascension_model.dart';
 import 'package:genshin_app/network/api_path.dart';
@@ -42,8 +43,8 @@ class AscensionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.network(
-          "${ApiPath.baseImageHost}${ascension.images!.nameicon}",
+        CachedNetworkImage(
+          imageUrl: "${ApiPath.baseImageHost}${ascension.images!.nameicon}",
           width: MediaQuery.of(context).size.width * 0.1,
           height: MediaQuery.of(context).size.width * 0.1,
         ),

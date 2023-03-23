@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/utils/character_utils.dart';
@@ -29,8 +30,8 @@ class GenshindbPage extends StatelessWidget {
                 right: MediaQuery.of(context).size.width * 0.1,
                 child: Opacity(
                   opacity: 0.7,
-                  child: Image.network(
-                    character.images.cover1 ??
+                  child: CachedNetworkImage(
+                    imageUrl: character.images.cover1 ??
                         character.images.cover2 ??
                         character.images.icon!,
                   ),
@@ -42,7 +43,7 @@ class GenshindbPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: getCharacterImageBackground(character.element, true),
                   image: DecorationImage(
-                    image: NetworkImage(
+                    image: CachedNetworkImageProvider(
                       character.images.cover1 ??
                           character.images.cover2 ??
                           character.images.icon!,

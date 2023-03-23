@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/models/general_character_model.dart';
@@ -22,10 +23,10 @@ class CharacterAvatar extends StatelessWidget {
         color: getCharacterImageBackground(character.element ?? ""),
         borderRadius: BorderRadius.circular(15),
       ),
-      child: Image.network(
-        character.images!.icon!,
-        errorBuilder: (context, error, stackTrace) =>
-            const Icon(Icons.error_outline_rounded),
+      child: CachedNetworkImage(
+        imageUrl: character.images!.icon!,
+        errorWidget: (context, url, error) =>
+            const Icon(Icons.error_outline_outlined),
       ),
     );
   }
