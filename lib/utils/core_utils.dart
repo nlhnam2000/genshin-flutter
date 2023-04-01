@@ -20,3 +20,20 @@ Color getCharacterImageBackground(String element, [bool isBlured = false]) {
       return CustomColor.dendroBackground.withOpacity(isBlured ? 0.6 : 1.0);
   }
 }
+
+List<Color> getItemColorBackground(String rarity) {
+  switch (int.tryParse(rarity)) {
+    case 1:
+      return k1star;
+    case 2:
+      return k2star;
+    case 3:
+      return k3star;
+    case 4:
+      return k4star;
+    case 5:
+      return k5star;
+    default:
+      throw Exception("This is not a valid rarity");
+  }
+}

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:genshin_app/network/app_service.dart';
 import 'package:genshin_app/provider/app_router.dart';
+import 'package:genshin_app/provider/character_provider.dart';
+import 'package:genshin_app/provider/weapon_general_provider.dart';
 import 'package:genshin_app/repository/repos.dart';
 import 'package:genshin_app/theme/theme.dart';
 import 'package:provider/provider.dart';
@@ -15,9 +17,15 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (context) => AppRouter(),
-          builder: (context, child) => const MyApp(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CharacterProvider()..getCharacters(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => WeaponGeneralProvider()..getWeaponGeneral(),
         ),
       ],
+      builder: (context, child) => const MyApp(),
     ),
   );
 }

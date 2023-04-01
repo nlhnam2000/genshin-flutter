@@ -49,7 +49,7 @@ class _ChangeQuantityState extends State<ChangeQuantity> {
           },
           child: const Icon(
             Icons.remove_circle_outline_outlined,
-            size: 30,
+            size: 28,
           ),
         ),
         const SizedBox(
@@ -57,7 +57,7 @@ class _ChangeQuantityState extends State<ChangeQuantity> {
         ),
         Text(
           currentQuantity.toString(),
-          style: const TextStyle(fontSize: 23),
+          style: const TextStyle(fontSize: 19),
         ),
         const SizedBox(
           width: 15,
@@ -78,7 +78,7 @@ class _ChangeQuantityState extends State<ChangeQuantity> {
               widget.onChangeQuantity(currentQuantity);
             }
           },
-          child: const Icon(Icons.add_circle_outline_sharp, size: 30),
+          child: const Icon(Icons.add_circle_outline_sharp, size: 28),
         ),
       ],
     );

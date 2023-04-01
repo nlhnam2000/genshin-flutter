@@ -4,6 +4,7 @@ import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/provider/ascension_provider.dart';
 import 'package:genshin_app/provider/detail_character_provider.dart';
 import 'package:genshin_app/provider/talent_provider.dart';
+import 'package:genshin_app/utils/constants.dart';
 import 'package:genshin_app/widgets/ascension/ascension_section.dart';
 import 'package:genshin_app/widgets/core/change_quantity.dart';
 import 'package:genshin_app/widgets/core/genshindb_page.dart';
@@ -49,8 +50,10 @@ class _CharacterDetailState extends State<CharacterDetail> {
         ),
       ],
       builder: (context, child) => Scaffold(
-        body: Consumer<DetailCharacterProvider>(
-          builder: (context, detailCharProvider, child) {
+        body: Consumer3<DetailCharacterProvider, TalentProvider,
+            AscensionProvider>(
+          builder: (context, detailCharProvider, talentProvider, ascendProvider,
+              child) {
             if (detailCharProvider.characterData.viewStatus ==
                 ViewStatus.loading) {
               return const Center(
@@ -73,8 +76,8 @@ class _CharacterDetailState extends State<CharacterDetail> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Consumer<TalentProvider>(
-                        builder: (context, talentProvider, child) {
+                      Builder(
+                        builder: (context) {
                           if (talentProvider.data.viewStatus ==
                               ViewStatus.succeed) {
                             return InfoSection(
@@ -109,12 +112,14 @@ class _CharacterDetailState extends State<CharacterDetail> {
                           return Container();
                         },
                       ),
-                      Consumer<AscensionProvider>(
-                        builder: (context, ascendProvider, child) {
+                      Builder(
+                        builder: (context) {
                           if (ascendProvider.ascensionData.viewStatus ==
                               ViewStatus.succeed) {
                             return Container(
                               alignment: Alignment.center,
+                              margin:
+                                  EdgeInsets.only(bottom: Dimens.paddingMedium),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [

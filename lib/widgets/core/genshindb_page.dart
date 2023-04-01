@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/character_model.dart';
-import 'package:genshin_app/utils/character_utils.dart';
+import 'package:genshin_app/utils/core_utils.dart';
 import 'package:genshin_app/utils/colors.dart';
 import 'package:genshin_app/utils/constants.dart';
 import 'package:go_router/go_router.dart';
@@ -56,6 +56,7 @@ class GenshindbPage extends StatelessWidget {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.only(bottom: Dimens.paddingMedium),
             constraints: BoxConstraints(
               minHeight: MediaQuery.of(context).size.height * 0.6,
             ),

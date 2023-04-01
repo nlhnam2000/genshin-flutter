@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/combat_model.dart';
 import 'package:genshin_app/network/api_path.dart';
-import 'package:genshin_app/utils/character_utils.dart';
+import 'package:genshin_app/utils/core_utils.dart';
 import 'package:genshin_app/utils/colors.dart';
 import 'package:genshin_app/utils/constants.dart';
 
