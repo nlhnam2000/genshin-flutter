@@ -1,3 +1,4 @@
+import 'package:genshin_app/main.dart';
 import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/provider/base_provider.dart';
 import 'package:genshin_app/screens/character_detail.dart';
@@ -8,6 +9,7 @@ class AppRouter extends BaseProvider {
   late GoRouter router = GoRouter(
     initialLocation: "/",
     debugLogDiagnostics: true,
+    navigatorKey: navigatorKey,
     routes: [
       GoRoute(
         path: "/",

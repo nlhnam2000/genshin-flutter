@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:genshin_app/models/ascension_model.dart';
 import 'package:genshin_app/network/api_path.dart';
 import 'package:genshin_app/utils/constants.dart';
-import 'dart:math';
 
 class AscensionSection extends StatelessWidget {
   final List<AscensionModel> ascensionList;
@@ -53,7 +52,7 @@ class AscensionItem extends StatelessWidget {
           // width: MediaQuery.of(context).size.width * 0.15,
           // height: MediaQuery.of(context).size.width * 0.15,
         ),
-        Text(ascension.count.toString()),
+        FittedBox(child: Text(ascension.count.toString())),
       ],
     );
   }

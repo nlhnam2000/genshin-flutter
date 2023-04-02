@@ -1,0 +1,15 @@
+{
+    "character": "Character", 
+    "weapon": "Weapon", 
+    "artifact": "Artifact", 
+    "biography": "Biography", 
+    "talent": "Talent", 
+    "pyro": "Pyro", 
+    "hydro": "Hydro", 
+    "geo": "Geo", 
+    "electro": "Electro", 
+    "anemo": "Anemo", 
+    "dendro": "Dendro", 
+    "cryo": "Cryo", 
+    "specialAbility": "Special Ability"
+}

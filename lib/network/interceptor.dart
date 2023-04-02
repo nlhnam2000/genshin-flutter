@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_core/network/dio_network.dart' as dio_network;
 import 'package:flutter_core/network/custom_cancel_token.dart';
 import 'package:genshin_app/network/api_service.dart';
+import 'package:flutter_core/caches/caches.dart';
+import 'package:flutter_core/models/language.dart';
 
 InterceptorsWrapper get interceptors => InterceptorsWrapper(
     onRequest: onRequestHandle,
@@ -11,6 +14,26 @@ InterceptorsWrapper get interceptors => InterceptorsWrapper(
 void onRequestHandle(
     RequestOptions options, RequestInterceptorHandler handler) {
   // options.headers['authorization'] = '${Profile.token?.type} ${Profile.token?.access}';
+  // switch (AppSetting.usingLanguage) {
+  //   case value:
+
+  //     break;
+  //   default:
+  // }
+  Language? currentLanguage = AppSetting.usingLanguage;
+  if (currentLanguage != null) {
+    switch (currentLanguage.code) {
+      case 'vi':
+        options.headers["accept-language"] = 'vi-VN';
+
+        break;
+      case 'en':
+        options.headers["accept-language"] = 'en-US';
+        break;
+      default:
+        options.headers["accept-language"] = 'en-US';
+    }
+  }
 
   handler.next(options);
 }
@@ -31,8 +54,6 @@ void onResponseHandle(
 
   handler.next(response);
 }
-
-// var dio = Dio().interceptors.add(interceptors);
 
 const int sendTimeout = 60000;
 const int receiveTimeout = 60000;
@@ -63,79 +84,3 @@ Future<GenshinDBResponseJson> get({
     headers: headers,
   );
 }
-
-// Future get(String host, String path,
-//     {Map<String, String>? headers,
-//     CustomCancelToken? cancelToken,
-//     Map<String, dynamic>? params,
-//     InterceptorsWrapper? customInterceptors,
-//     int sendTimeout = sendTimeout,
-//     int receiveTimeout = receiveTimeout,
-//     int connectTimeout = connectTimeout,
-//     required Function(Response res) parser}) async {
-//   final dio = prepareDio(interceptors: customInterceptors ?? interceptors);
-//   dio.options.sendTimeout = sendTimeout;
-//   dio.options.receiveTimeout = receiveTimeout;
-//   dio.options.connectTimeout = connectTimeout;
-//   final response = await dio.get(
-//     '$host/$path',
-//     queryParameters: params,
-//     cancelToken: cancelToken,
-//     options: Options(headers: headers),
-//   );
-//   return parser(response);
-// }
-
-// Future post(
-//   String host,
-//   String path,
-//   dynamic body, {
-//   Map<String, String>? headers,
-//   CustomCancelToken? cancelToken,
-//   InterceptorsWrapper? customInterceptors,
-//   int sendTimeout = sendTimeout,
-//   int receiveTimeout = receiveTimeout,
-//   int connectTimeout = connectTimeout,
-//   required Function(Response res) parser,
-// }) async {
-//   final dio = prepareDio(interceptors: customInterceptors ?? interceptors);
-//   dio.options.connectTimeout = connectTimeout;
-//   dio.options.receiveTimeout = receiveTimeout;
-//   dio.options.sendTimeout = sendTimeout;
-//   final response = await dio.post(
-//     '$host/$path',
-//     data: body,
-//     cancelToken: cancelToken,
-//     options: Options(headers: headers),
-//   );
-//   return parser(response);
-// }
-
-// Future<File> download(
-//   String url,
-//   String savePath, {
-//   CustomCancelToken? cancelToken,
-//   ProgressCallback? onReceiveProgress,
-//   InterceptorsWrapper? customInterceptors,
-// }) async {
-//   final dio = prepareDio(interceptors: customInterceptors ?? interceptors);
-//   await dio.download(
-//     url,
-//     savePath,
-//     cancelToken: cancelToken,
-//     onReceiveProgress: onReceiveProgress,
-//   );
-//   File file = File(savePath);
-//   return file;
-// }
-
-// Dio prepareDio({required InterceptorsWrapper interceptors}) {
-//   final dio = Dio()..interceptors.add(interceptors);
-//   (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-//       (HttpClient client) {
-//     client.badCertificateCallback =
-//         (X509Certificate cert, String host, int port) => true;
-//     return client;
-//   };
-//   return dio;
-// }

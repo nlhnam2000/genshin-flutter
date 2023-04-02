@@ -1,0 +1,15 @@
+{
+    "character": "Nhân vật", 
+    "weapon": "Vũ khí", 
+    "artifact": "Thánh DV", 
+    "biography": "Mô tả", 
+    "talent": "Thiên phú", 
+    "pyro": "Hỏa", 
+    "hydro": "Thủy", 
+    "geo": "Nham", 
+    "electro": "Lôi", 
+    "anemo": "Phong", 
+    "dendro": "Thảo", 
+    "cryo": "Băng", 
+    "specialAbility": "Kỹ năng"
+}

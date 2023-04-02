@@ -12,6 +12,7 @@ import 'package:genshin_app/widgets/core/info_section.dart';
 import 'package:genshin_app/widgets/core/talent_item.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CharacterDetail extends StatefulWidget {
   final String name;
@@ -69,7 +70,7 @@ class _CharacterDetailState extends State<CharacterDetail> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       InfoSection(
-                        title: "Biography",
+                        title: AppLocalizations.of(context)!.biography,
                         content: Text(
                             detailCharProvider.characterData.data!.description),
                       ),
@@ -81,7 +82,8 @@ class _CharacterDetailState extends State<CharacterDetail> {
                           if (talentProvider.data.viewStatus ==
                               ViewStatus.succeed) {
                             return InfoSection(
-                              title: "Special Ability",
+                              title:
+                                  AppLocalizations.of(context)!.specialAbility,
                               content: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

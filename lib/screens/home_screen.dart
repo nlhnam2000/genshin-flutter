@@ -9,6 +9,7 @@ import 'package:genshin_app/utils/colors.dart';
 import 'package:genshin_app/utils/constants.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -90,15 +91,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     splashBorderRadius: BorderRadius.circular(20),
-                    tabs: const [
+                    tabs: [
                       Tab(
-                        child: Text("Characters"),
+                        child: Text(AppLocalizations.of(context)!.character),
                       ),
                       Tab(
-                        child: Text("Weapons"),
+                        child: Text(AppLocalizations.of(context)!.weapon),
                       ),
                       Tab(
-                        child: Text("Artifacts"),
+                        child: Text(AppLocalizations.of(context)!.artifact),
                       ),
                     ],
                   ),

@@ -289,7 +289,7 @@ packages:
     source: hosted
     version: "2.0.1"
   flutter_localizations:
-    dependency: transitive
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -451,7 +451,7 @@ packages:
     source: hosted
     version: "2.6.3"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       url: "https://pub.dartlang.org"
