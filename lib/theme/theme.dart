@@ -8,7 +8,11 @@ final ThemeData appTheme = ThemeData(
   ),
   textTheme: const TextTheme(
     headline1: TextStyle(color: Colors.white),
-    headline2: TextStyle(color: Colors.white),
+    headline2: TextStyle(
+      color: Colors.white,
+      fontSize: 17,
+      fontWeight: FontWeight.w500,
+    ),
     bodyText2: TextStyle(color: Colors.white),
     subtitle1: TextStyle(color: Colors.white),
     caption: TextStyle(color: Colors.white),

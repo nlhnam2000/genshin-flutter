@@ -11,5 +11,7 @@
     "anemo": "Anemo", 
     "dendro": "Dendro", 
     "cryo": "Cryo", 
-    "specialAbility": "Special Ability"
+    "specialAbility": "Special Ability", 
+    "setting": "Setting", 
+    "source": "Source"
 }

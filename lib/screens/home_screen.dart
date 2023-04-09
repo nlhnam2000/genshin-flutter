@@ -7,6 +7,7 @@ import 'package:genshin_app/screens/weapon_screen.dart';
 import 'package:genshin_app/screens/widgets/search_text_field.dart';
 import 'package:genshin_app/utils/colors.dart';
 import 'package:genshin_app/utils/constants.dart';
+import 'package:genshin_app/widgets/core/home_drawer.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -27,9 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        // backgroundColor: CustomColor.primaryBackground,
+        drawer: HomeDrawer(),
         appBar: AppBar(
-          leading: const Icon(Icons.menu),
+          // leading: const Icon(Icons.menu),
           actions: [
             GestureDetector(
               onTap: () {

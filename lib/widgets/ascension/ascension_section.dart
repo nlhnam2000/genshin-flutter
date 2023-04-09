@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:genshin_app/models/ascension_model.dart';
 import 'package:genshin_app/network/api_path.dart';
 import 'package:genshin_app/utils/constants.dart';
+import 'package:genshin_app/widgets/core/material_dialog.dart';
 
 class AscensionSection extends StatelessWidget {
   final List<AscensionModel> ascensionList;
@@ -26,8 +27,17 @@ class AscensionSection extends StatelessWidget {
                     vertical: Dimens.paddingMedium,
                     horizontal: Dimens.paddingMedium,
                   ),
-                  child: AscensionItem(
-                    ascension: ascensionList[i],
+                  child: GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) =>
+                            MaterialDialog(material: ascensionList[i]),
+                      );
+                    },
+                    child: AscensionItem(
+                      ascension: ascensionList[i],
+                    ),
                   ),
                 ),
               )

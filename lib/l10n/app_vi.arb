@@ -11,5 +11,7 @@
     "anemo": "Phong", 
     "dendro": "Thảo", 
     "cryo": "Băng", 
-    "specialAbility": "Kỹ năng"
+    "specialAbility": "Kỹ năng", 
+    "setting": "Thiết lập", 
+    "source": "Nguồn gốc"
 }

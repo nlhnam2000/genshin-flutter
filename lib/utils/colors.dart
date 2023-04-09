@@ -12,6 +12,7 @@ abstract class CustomColor {
   static const secondaryBackground = Color.fromRGBO(36, 39, 51, 1);
   static const secondaryBackground2 = Color.fromRGBO(45, 49, 62, 1);
   static const bluredBackground = Color.fromRGBO(36, 39, 51, 0.7);
+  static const materialWhiteBackground = Color.fromRGBO(237, 229, 216, 1);
 }
 
 const List<Color> k5star = [

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/base_provider_model.dart';
 import 'package:genshin_app/models/character_model.dart';
@@ -19,14 +20,15 @@ class CharacterDetail extends StatefulWidget {
   const CharacterDetail({Key? key, required this.name}) : super(key: key);
 
   static const routeName = "character_detail";
-  static MaterialPage page({required String name}) {
-    return MaterialPage(
+  static CupertinoPage page({required String name}) {
+    return CupertinoPage(
       name: routeName,
       key: const ValueKey(routeName),
       child: CharacterDetail(
         name: name,
       ),
     );
+    
   }
 
   @override

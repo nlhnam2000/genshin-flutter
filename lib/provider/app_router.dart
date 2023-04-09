@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:genshin_app/main.dart';
 import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/provider/base_provider.dart';
@@ -23,6 +24,19 @@ class AppRouter extends BaseProvider {
             name: state.params["name"]!,
           );
         },
+        // pageBuilder: (context, state) => CustomTransitionPage(
+        //   key: state.pageKey,
+        //   child: CharacterDetail(name: state.params["name"]!),
+        //   transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+        //       SlideTransition(
+        //           position: animation.drive(
+        //             Tween<Offset>(
+        //               begin: const Offset(0.25, 0.25),
+        //               end: Offset.zero,
+        //             ).chain(CurveTween(curve: Curves.easeIn)),
+        //           ),
+        //           child: child),
+        // ),
       )
     ],
   );
