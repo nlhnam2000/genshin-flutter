@@ -13,6 +13,7 @@ class GenshindbPage extends StatelessWidget {
     Key? key,
     required this.child,
     required this.character,
+    //
   }) : super(key: key);
 
   @override
