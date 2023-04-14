@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'weapon_general_model.dart';
+part of '../weapon_general_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

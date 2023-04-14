@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:genshin_app/models/image_model.dart';
 
-part 'ascension_model.freezed.dart';
-part 'ascension_model.g.dart';
+part 'generated/ascension_model.freezed.dart';
+part 'generated/ascension_model.g.dart';
 
 @freezed
 class AscensionModel with _$AscensionModel {

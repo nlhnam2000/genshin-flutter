@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'material_model.dart';
+part of '../ascension_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MaterialModel _$$_MaterialModelFromJson(Map<String, dynamic> json) =>
-    _$_MaterialModel(
+_$_AscensionModel _$$_AscensionModelFromJson(Map<String, dynamic> json) =>
+    _$_AscensionModel(
       name: json['name'] as String?,
       description: json['description'] as String?,
       sortorder: json['sortorder'] as int?,
@@ -19,9 +19,10 @@ _$_MaterialModel _$$_MaterialModelFromJson(Map<String, dynamic> json) =>
       images: json['images'] == null
           ? null
           : ImageModel.fromJson(json['images'] as Map<String, dynamic>),
+      count: json['count'] as int?,
     );
 
-Map<String, dynamic> _$$_MaterialModelToJson(_$_MaterialModel instance) =>
+Map<String, dynamic> _$$_AscensionModelToJson(_$_AscensionModel instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
@@ -31,4 +32,5 @@ Map<String, dynamic> _$$_MaterialModelToJson(_$_MaterialModel instance) =>
       'materialtype': instance.materialtype,
       'source': instance.source,
       'images': instance.images,
+      'count': instance.count,
     };

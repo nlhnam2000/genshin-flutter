@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:genshin_app/models/image_model.dart';
 
-part 'general_character_model.freezed.dart';
-part 'general_character_model.g.dart';
+part 'generated/general_character_model.freezed.dart';
+part 'generated/general_character_model.g.dart';
 
 @freezed
 class GeneralCharacterModel with _$GeneralCharacterModel {

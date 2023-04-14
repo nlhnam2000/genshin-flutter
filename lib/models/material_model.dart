@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:genshin_app/models/image_model.dart';
 
-part 'material_model.freezed.dart';
-part 'material_model.g.dart';
+part 'generated/material_model.freezed.dart';
+part 'generated/material_model.g.dart';
 
 @freezed
 class MaterialModel with _$MaterialModel {

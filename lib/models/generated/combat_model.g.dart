@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'combat_model.dart';
+part of '../combat_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
