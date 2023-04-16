@@ -1,5 +1,5 @@
 class ApiPath {
-  static const String baseHost = "http://192.168.1.135:4000";
+  static const String baseHost = "http://127.0.0.1:4000";
   static const String baseImageHost =
       "https://res.cloudinary.com/genshin/image/upload/sprites/";
 

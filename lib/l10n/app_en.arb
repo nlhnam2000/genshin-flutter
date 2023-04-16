@@ -13,5 +13,9 @@
     "cryo": "Cryo", 
     "specialAbility": "Special Ability", 
     "setting": "Setting", 
-    "source": "Source"
+    "source": "Source", 
+    "logout": "Logout", 
+    "next": "Next", 
+    "useLocalhost": "Skip (use localhost)", 
+    "enterDeployedHost": "Enter server"
 }

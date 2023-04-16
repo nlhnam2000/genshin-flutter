@@ -13,5 +13,9 @@
     "cryo": "Băng", 
     "specialAbility": "Kỹ năng", 
     "setting": "Thiết lập", 
-    "source": "Nguồn gốc"
+    "source": "Nguồn gốc", 
+    "logout": "Đăng xuất", 
+    "next": "Tiếp theo", 
+    "useLocalhost": "Bỏ qua (dùng localhost)", 
+    "enterDeployedHost": "Nhập server"
 }

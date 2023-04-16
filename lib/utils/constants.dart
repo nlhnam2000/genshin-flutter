@@ -13,3 +13,7 @@ class Dimens {
   static double radiusBig = 20;
   static double radiusRounded = 40;
 }
+
+class StorageConstant {
+  static String savedHost = "savedHost";
+}

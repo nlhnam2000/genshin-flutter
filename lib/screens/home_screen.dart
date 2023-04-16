@@ -14,6 +14,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+  static const routeName = "HomeScreen";
+  static MaterialPage page() {
+    return const MaterialPage(
+        child: HomeScreen(), name: routeName, key: ValueKey(routeName));
+  }
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -28,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        drawer: HomeDrawer(),
+        drawer: const HomeDrawer(),
         appBar: AppBar(
           // leading: const Icon(Icons.menu),
           actions: [
