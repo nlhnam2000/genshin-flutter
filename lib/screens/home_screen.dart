@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/base_provider_model.dart';
 import 'package:genshin_app/provider/character_provider.dart';
+import 'package:genshin_app/screens/artifact_screen.dart';
 import 'package:genshin_app/screens/character_detail.dart';
 import 'package:genshin_app/screens/character_screen.dart';
 import 'package:genshin_app/screens/weapon_screen.dart';
@@ -115,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         body: const TabBarView(
-          children: [CharacterScreen(), WeaponScreen(), CharacterScreen()],
+          children: [CharacterScreen(), WeaponScreen(), ArtifactScreen()],
         ),
       ),
     );

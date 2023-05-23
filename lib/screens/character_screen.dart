@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/base_provider_model.dart';
 import 'package:genshin_app/provider/character_provider.dart';
+import 'package:genshin_app/screens/base_provider_widget.dart';
 import 'package:genshin_app/screens/character_detail.dart';
 import 'package:genshin_app/widgets/character/character_container.dart';
 import 'package:go_router/go_router.dart';
@@ -13,8 +14,9 @@ class CharacterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CharacterProvider>(
       builder: (context, value, child) {
-        if (value.characterList.viewStatus == ViewStatus.succeed) {
-          return Container(
+        return BaseProviderWidget(
+          baseProviderModel: value.characterList,
+          childWhenSuceed: Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             decoration: const BoxDecoration(
@@ -27,7 +29,7 @@ class CharacterScreen extends StatelessWidget {
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                   childAspectRatio: 0.9),
-              itemCount: value.characterList.data!.length,
+              itemCount: value.characterList.data?.length,
               itemBuilder: ((context, index) {
                 return GestureDetector(
                   onTap: () => GoRouter.of(context).pushNamed(
@@ -43,16 +45,8 @@ class CharacterScreen extends StatelessWidget {
                 );
               }),
             ),
-          );
-        } else if (value.characterList.viewStatus == ViewStatus.failed) {
-          return Center(
-            child: Text(value.errorMessage!.toString()),
-          );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+          ),
+        );
       },
     );
   }

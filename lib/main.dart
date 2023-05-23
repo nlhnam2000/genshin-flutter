@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:genshin_app/network/app_service.dart';
 import 'package:genshin_app/provider/app_router.dart';
+import 'package:genshin_app/provider/artifact_provider.dart';
 import 'package:genshin_app/provider/character_provider.dart';
 import 'package:genshin_app/provider/weapon_general_provider.dart';
 import 'package:genshin_app/repository/repos.dart';
@@ -31,6 +32,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (context) => WeaponGeneralProvider()..getWeaponGeneral(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ArtifactProvider()..getAllArtifact(),
         ),
       ],
       builder: (context, child) => const MyApp(),

@@ -2,9 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_core/network/dio_network.dart' as dio_network;
 import 'package:flutter_core/network/custom_cancel_token.dart';
+import 'package:genshin_app/device/storage_service.dart';
+import 'package:genshin_app/main.dart';
 import 'package:genshin_app/network/api_service.dart';
 import 'package:flutter_core/caches/caches.dart';
 import 'package:flutter_core/models/language.dart';
+import 'package:genshin_app/screens/splash_screen.dart';
+import 'package:go_router/go_router.dart';
 
 InterceptorsWrapper get interceptors => InterceptorsWrapper(
     onRequest: onRequestHandle,
@@ -40,6 +44,19 @@ void onRequestHandle(
 
 void onErrorHandle(DioError error, ErrorInterceptorHandler handler) async {
   final response = error.response;
+
+  if (response != null) {
+    if (response.statusCode == 404) {
+      GoRouter.of(navigatorKey.currentContext!).goNamed(SplashScreen.routeName);
+    }
+  } else {
+    StorageService().clearAll();
+    GoRouter.of(navigatorKey.currentContext!).goNamed(SplashScreen.routeName);
+  }
+
+  /// if the url is wrong or no longer available
+  /// then go back to the splash screen
+
   handler.next(error);
 }
 
