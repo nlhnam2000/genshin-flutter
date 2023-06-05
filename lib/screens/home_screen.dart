@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:genshin_app/models/base_provider_model.dart';
 import 'package:genshin_app/provider/character_provider.dart';
-import 'package:genshin_app/screens/artifact_screen.dart';
-import 'package:genshin_app/screens/character_detail.dart';
-import 'package:genshin_app/screens/character_screen.dart';
-import 'package:genshin_app/screens/weapon_screen.dart';
+import 'package:genshin_app/screens/artifacts/artifact_screen.dart';
+import 'package:genshin_app/screens/characters/character_detail.dart';
+import 'package:genshin_app/screens/characters/character_screen.dart';
+import 'package:genshin_app/screens/weapons/weapon_screen.dart';
 import 'package:genshin_app/screens/widgets/search_text_field.dart';
+import 'package:genshin_app/services/analytics_service.dart';
 import 'package:genshin_app/utils/colors.dart';
 import 'package:genshin_app/utils/constants.dart';
 import 'package:genshin_app/widgets/core/home_drawer.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -28,6 +30,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool _showSearch = false;
   final TextEditingController searchController = TextEditingController();
+  final analyticService = Get.find<AnalyticsService>();
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ? []
                                 : value.searchResult.data!,
                             itemAsResult: (item) => item,
-                            onSelected: (value) {
+                            onSelected: (value) async {
                               GoRouter.of(context).pushNamed(
                                   CharacterDetail.routeName,
                                   params: {
@@ -76,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               setState(() {
                                 _showSearch = false;
                               });
+                              await analyticService.logSearchEvent(value);
                             },
                             spacing: 8,
                             isScrollable: true,

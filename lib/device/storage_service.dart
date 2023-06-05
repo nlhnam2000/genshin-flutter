@@ -14,6 +14,7 @@ class StorageService {
     if (cached != null) {
       return jsonDecode(cached);
     }
+    return null;
   }
 
   Future<void> clearAll() async {

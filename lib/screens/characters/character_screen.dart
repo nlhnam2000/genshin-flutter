@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genshin_app/models/base_provider_model.dart';
 import 'package:genshin_app/provider/character_provider.dart';
 import 'package:genshin_app/screens/base_provider_widget.dart';
-import 'package:genshin_app/screens/character_detail.dart';
+import 'package:genshin_app/screens/characters/character_detail.dart';
 import 'package:genshin_app/widgets/character/character_container.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';

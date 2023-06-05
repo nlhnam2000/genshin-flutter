@@ -7,13 +7,14 @@ import 'package:genshin_app/main.dart';
 import 'package:genshin_app/network/api_service.dart';
 import 'package:flutter_core/caches/caches.dart';
 import 'package:flutter_core/models/language.dart';
-import 'package:genshin_app/screens/splash_screen.dart';
+import 'package:genshin_app/screens/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 InterceptorsWrapper get interceptors => InterceptorsWrapper(
-    onRequest: onRequestHandle,
-    onError: onErrorHandle,
-    onResponse: onResponseHandle);
+      onRequest: onRequestHandle,
+      onError: onErrorHandle,
+      onResponse: onResponseHandle,
+    );
 
 void onRequestHandle(
     RequestOptions options, RequestInterceptorHandler handler) {
@@ -24,9 +25,10 @@ void onRequestHandle(
   //     break;
   //   default:
   // }
-  Language? currentLanguage = AppSetting.usingLanguage;
+  Locale? currentLanguage =
+      Localizations.localeOf(navigatorKey.currentContext!);
   if (currentLanguage != null) {
-    switch (currentLanguage.code) {
+    switch (currentLanguage.languageCode) {
       case 'vi':
         options.headers["accept-language"] = 'vi-VN';
 

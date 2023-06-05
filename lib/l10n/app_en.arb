@@ -17,5 +17,6 @@
     "logout": "Logout", 
     "next": "Next", 
     "useLocalhost": "Skip (use localhost)", 
-    "enterDeployedHost": "Enter server"
+    "enterDeployedHost": "Enter server", 
+    "setAppLanguage": "Select language"
 }

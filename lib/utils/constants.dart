@@ -1,19 +1,23 @@
 class Dimens {
   /// padding
-  static double paddingSmall = 5;
-  static double paddingMedium = 10;
-  static double paddingBigger = 15;
-  static double paddingBig = 20;
-  static double paddingRounded = 40;
+  static const double paddingSmall = 5;
+  static const double paddingMedium = 10;
+  static const double paddingBigger = 15;
+  static const double paddingBig = 20;
+  static const double paddingRounded = 40;
 
   // radius
-  static double radiusSmall = 5;
-  static double radiusMedium = 10;
-  static double radiusBigger = 15;
-  static double radiusBig = 20;
-  static double radiusRounded = 40;
+  static const double radiusSmall = 5;
+  static const double radiusMedium = 10;
+  static const double radiusBigger = 15;
+  static const double radiusBig = 20;
+  static const double radiusRounded = 40;
 }
 
 class StorageConstant {
   static String savedHost = "savedHost";
+}
+
+class LanguageConstant {
+  static String appLanguage = "appLanguage";
 }

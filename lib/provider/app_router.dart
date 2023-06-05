@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:genshin_app/main.dart';
 import 'package:genshin_app/models/character_model.dart';
 import 'package:genshin_app/provider/base_provider.dart';
-import 'package:genshin_app/screens/character_detail.dart';
+import 'package:genshin_app/screens/characters/character_detail.dart';
 import 'package:genshin_app/screens/home_screen.dart';
-import 'package:genshin_app/screens/splash_screen.dart';
+import 'package:genshin_app/screens/settings/setting_screen.dart';
+import 'package:genshin_app/screens/splash/splash_screen.dart';
+import 'package:genshin_app/screens/test/report_no_sale/report_no_sale_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter extends BaseProvider {
@@ -46,7 +48,17 @@ class AppRouter extends BaseProvider {
         //           ),
         //           child: child),
         // ),
-      )
+      ),
+      GoRoute(
+        path: "/settings",
+        name: SettingScreen.routeName,
+        pageBuilder: (context, state) => SettingScreen.page(),
+      ),
+      GoRoute(
+        path: "/test/report-no-sale",
+        name: ReportNoSaleScreen.routeName,
+        pageBuilder: (context, state) => ReportNoSaleScreen.page(),
+      ),
     ],
   );
 }

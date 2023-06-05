@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "70735585333",
+    "project_id": "genshin-data-ga4",
+    "storage_bucket": "genshin-data-ga4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70735585333:android:6a4c5500bc010c6105117c",
+        "android_client_info": {
+          "package_name": "com.example.genshin_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZJklKfED3FYJcIFU-nOSo0TYly50xO6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,90 @@
+[
+    {
+        "staffCode": "KT001", 
+        "staffName": "Nhân viên 1", 
+        "staffUnit": "Viettel", 
+        "staffRoute": "01992392343", 
+        "totalCustomerNoSale": "8/20", 
+        "volume": "40%", 
+        "customerList": [
+            {
+                "customerCode": "123.456789", 
+                "customerName": "An Việt", 
+                "customerUnit": "Viettel", 
+                "lastDayVisit": "10/04/2023", 
+                "lastDayOpenSale": "13/04/2023", 
+                "lastDaySale": "200000", 
+                "lastOrderInfo": [
+                    {
+                        "invoiceCode": "VT012334576", 
+                        "status": "Đã giao thành công", 
+                        "price": "10000000", 
+                        "skus": 10, 
+                        "submitOrderDay": "20/04/2023"
+                    }
+                ]
+            }, 
+            {
+                "customerCode": "123.456789", 
+                "customerName": "An Việt 2", 
+                "customerUnit": "Viettel", 
+                "lastDayVisit": "10/04/2023", 
+                "lastDayOpenSale": "13/04/2023", 
+                "lastDaySale": "9000000", 
+                "lastOrderInfo": [
+                    {
+                        "invoiceCode": "VT012334576", 
+                        "status": "Đã giao thành công", 
+                        "price": "10000000", 
+                        "skus": 10, 
+                        "submitOrderDay": "20/04/2023"
+                    }
+                ]
+            }
+        ]
+    }, 
+    {
+        "staffCode": "KT002", 
+        "staffName": "Nhân viên 2", 
+        "staffUnit": "Viettel Solution", 
+        "staffRoute": "01992392343", 
+        "totalCustomerNoSale": "8/20", 
+        "volume": "40%", 
+        "customerList": [
+            {
+                "customerCode": "123.456789", 
+                "customerName": "An Việt", 
+                "customerUnit": "Viettel", 
+                "lastDayVisit": "10/04/2023", 
+                "lastDayOpenSale": "13/04/2023", 
+                "lastDaySale": "1000000", 
+                "lastOrderInfo": [
+                    {
+                        "invoiceCode": "VT012334576", 
+                        "status": "Đã giao thành công", 
+                        "price": "10000000", 
+                        "skus": 10, 
+                        "submitOrderDay": "20/04/2023"
+                    }
+                ]
+            }, 
+            {
+                "customerCode": "123.456789", 
+                "customerName": "An Việt 2", 
+                "customerUnit": "Viettel", 
+                "lastDayVisit": "10/04/2023", 
+                "lastDayOpenSale": "13/04/2023", 
+                "lastDaySale": "800000", 
+                "lastOrderInfo": [
+                    {
+                        "invoiceCode": "VT012334576", 
+                        "status": "Đã giao thành công", 
+                        "price": "10000000", 
+                        "skus": 10, 
+                        "submitOrderDay": "20/04/2023"
+                    }
+                ]
+            }
+        ]
+    }
+]

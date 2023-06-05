@@ -65,7 +65,7 @@ class _SearchTextFieldState<T> extends State<SearchTextField<T>> {
     // remove previous overlay
     removeOverlay();
 
-    final overlay = Overlay.of(context)!;
+    final overlay = Overlay.of(context);
     final renderBox = context.findRenderObject() as RenderBox;
     final size = renderBox.size;
 
@@ -84,7 +84,7 @@ class _SearchTextFieldState<T> extends State<SearchTextField<T>> {
       ),
     );
 
-    overlay.insert(entry!);
+    overlay?.insert(entry!);
   }
 
   void removeOverlay() {

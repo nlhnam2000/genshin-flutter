@@ -17,5 +17,6 @@
     "logout": "Đăng xuất", 
     "next": "Tiếp theo", 
     "useLocalhost": "Bỏ qua (dùng localhost)", 
-    "enterDeployedHost": "Nhập server"
+    "enterDeployedHost": "Nhập server", 
+    "setAppLanguage": "Chọn ngôn ngữ ứng dụng"
 }

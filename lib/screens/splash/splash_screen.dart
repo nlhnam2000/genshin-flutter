@@ -5,11 +5,13 @@ import 'package:genshin_app/device/storage_service.dart';
 import 'package:genshin_app/models/base_provider_model.dart';
 import 'package:genshin_app/provider/splash_provider.dart';
 import 'package:genshin_app/screens/home_screen.dart';
+import 'package:genshin_app/services/analytics_service.dart';
 import 'package:genshin_app/utils/colors.dart';
 import 'package:genshin_app/utils/constants.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -33,6 +35,7 @@ class _SplashScreenState extends State<SplashScreen>
   final TextEditingController textController = TextEditingController();
   // state
   bool _isShowTextField = false;
+  final _analyticsService = Get.find<AnalyticsService>();
 
   Future<void> onStartUp() async {
     /// fetch from storage to check if there's already the url host
@@ -152,8 +155,9 @@ class _SplashScreenState extends State<SplashScreen>
         ),
         floatingActionButton: _isShowTextField
             ? TextButton(
-                onPressed: () {
+                onPressed: () async {
                   navigator.pushNamed(HomeScreen.routeName);
+                  await _analyticsService.logLogin();
                 },
                 child: Text(AppLocalizations.of(context)!.useLocalhost))
             : const SizedBox(),
