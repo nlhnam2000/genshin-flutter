@@ -4,6 +4,8 @@ import 'package:genshin_app/device/storage_service.dart';
 import 'package:genshin_app/screens/settings/setting_screen.dart';
 import 'package:genshin_app/screens/splash/splash_screen.dart';
 import 'package:genshin_app/screens/test/report_no_sale/report_no_sale_screen.dart';
+import 'package:genshin_app/screens/test/test_screen/scroll.dart';
+import 'package:genshin_app/screens/test/visit/visit_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -44,6 +46,42 @@ class HomeDrawer extends StatelessWidget {
               ),
               title: Text(
                 "Report no sale",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 17,
+                ),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              GoRouter.of(context).pushNamed(TestScrollWidget.routeName);
+            },
+            child: const ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Test scroll",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 17,
+                ),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              GoRouter.of(context).pushNamed(VisitScreen.routeName);
+            },
+            child: const ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Visit",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 17,

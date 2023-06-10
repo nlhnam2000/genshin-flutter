@@ -7,6 +7,9 @@ import 'package:genshin_app/screens/home_screen.dart';
 import 'package:genshin_app/screens/settings/setting_screen.dart';
 import 'package:genshin_app/screens/splash/splash_screen.dart';
 import 'package:genshin_app/screens/test/report_no_sale/report_no_sale_screen.dart';
+import 'package:genshin_app/screens/test/test_screen/scroll.dart';
+import 'package:genshin_app/screens/test/visit/visit_detail.dart';
+import 'package:genshin_app/screens/test/visit/visit_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter extends BaseProvider {
@@ -59,6 +62,22 @@ class AppRouter extends BaseProvider {
         name: ReportNoSaleScreen.routeName,
         pageBuilder: (context, state) => ReportNoSaleScreen.page(),
       ),
+      GoRoute(
+        path: "/test/visit",
+        name: VisitScreen.routeName,
+        pageBuilder: (context, state) => VisitScreen.page(),
+      ),
+      GoRoute(
+        path: "/test/scroll",
+        name: TestScrollWidget.routeName,
+        pageBuilder: (context, state) => TestScrollWidget.page(),
+      ),
+      GoRoute(
+        path: "/test/visit/:name",
+        name: VisitDetail.routeName,
+        pageBuilder: (context, state) =>
+            VisitDetail.page(name: state.params["name"]!),
+      )
     ],
   );
 }

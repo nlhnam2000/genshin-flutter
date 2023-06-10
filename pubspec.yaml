@@ -47,6 +47,7 @@ dependencies:
   flutter_secure_storage: ^8.0.0
   firebase_analytics: ^10.4.1
   firebase_core: ^2.13.0
+  flutter_branch_sdk: 6.0.0
 
 dev_dependencies:
   flutter_test:

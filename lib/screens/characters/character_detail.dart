@@ -6,6 +6,7 @@ import 'package:genshin_app/provider/ascension_provider.dart';
 import 'package:genshin_app/provider/detail_character_provider.dart';
 import 'package:genshin_app/provider/talent_provider.dart';
 import 'package:genshin_app/utils/constants.dart';
+import 'package:genshin_app/utils/deeplink.dart';
 import 'package:genshin_app/widgets/ascension/ascension_section.dart';
 import 'package:genshin_app/widgets/core/change_quantity.dart';
 import 'package:genshin_app/widgets/core/genshindb_page.dart';
@@ -20,6 +21,7 @@ class CharacterDetail extends StatefulWidget {
   const CharacterDetail({Key? key, required this.name}) : super(key: key);
 
   static const routeName = "character_detail";
+  static const pathName = "/character/:name";
   static CupertinoPage page({required String name}) {
     return CupertinoPage(
       name: routeName,
@@ -28,7 +30,6 @@ class CharacterDetail extends StatefulWidget {
         name: name,
       ),
     );
-    
   }
 
   @override
@@ -36,6 +37,15 @@ class CharacterDetail extends StatefulWidget {
 }
 
 class _CharacterDetailState extends State<CharacterDetail> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final GoRouterState state = GoRouterState.of(context);
+      DeeplinkService.instance.generateDeeplink(context, state.location);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

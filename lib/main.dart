@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_branch_sdk/flutter_branch_sdk.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:genshin_app/network/app_service.dart';
 import 'package:genshin_app/provider/app_router.dart';
@@ -9,6 +10,7 @@ import 'package:genshin_app/provider/report_provider.dart';
 import 'package:genshin_app/provider/weapon_general_provider.dart';
 import 'package:genshin_app/repository/repos.dart';
 import 'package:genshin_app/theme/theme.dart';
+import 'package:genshin_app/utils/deeplink.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_core/caches/caches.dart';
 import 'package:flutter_core/localizations/localizations.dart';
@@ -53,10 +55,29 @@ Future<void> main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    FlutterBranchSdk.validateSDKIntegration();
+    DeeplinkService.instance.initDeeplink();
+    DeeplinkService.instance.listenDeeplink();
+    FlutterBranchSdk.setIdentity("branch_user_test");
+  }
+
+  @override
+  void dispose() {
+    DeeplinkService.instance.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final routes = Provider.of<AppRouter>(context).router;
